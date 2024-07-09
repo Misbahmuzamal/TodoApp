@@ -1,43 +1,45 @@
 tasks = []
 
-def task():
-    print("Task Management App")
-    number = int(input("Enter how many task you want to add: "))
-    for i in range(1, number + 1):
-        task_item = input(f"the task {i}: ")
-        tasks.append(task_item)
+def task_fun():
+    print("Welcome to Task Manager App")
+    task = int(input("How many tasks do you want to add: "))
+    for i in range(1, task + 1):
+        task_list = input(f"The task is {i}: ")
+        tasks.append(task_list)
 
     while True:
-        print("1. Add task")
-        print("2. Update task")
-        print("3. Delete task")
-        print("4. Exit app")
-        choice = input("Enter your choice: ")
-
+        print("1. List Task")
+        print("2. Add task")
+        print("3. Update task")
+        print("4. Delete task")
+        print("5. Exit app")
+        choice = input("Select the option: ")
         if choice == '1':
-            new_task = input("Enter the task to add: ")
-            tasks.append(new_task)
-            print(f"Updated task list: {tasks}")
+            print(tasks)
         elif choice == '2':
-            update_task = input("Enter the task to update: ")
-            new_task = input("Enter the new task: ")
-            if update_task in tasks:
-                ind = tasks.index(update_task)
-                tasks[ind] = new_task
-
+            add = input("Enter the task you want to add: ")
+            tasks.append(add)
+            print(tasks)
+        elif choice == '3':
+            up = input("Enter the task you want to update: ")
+            new_task = input("Enter the new task you want to add: ")
+            if up in tasks:
+                task_number = tasks.index(up)
+                tasks[task_number] = new_task
+                print(tasks)
             else:
-                print("the task you want to update can not exit in list")
-            print(f"Updated task list: {tasks}")
-        elif choice=='3':
-            delete_task=input("enter task to delete: ")
-            if delete_task in tasks:
-                tasks.remove(delete_task)
+                print("Task not found!")
+        elif choice == '4':
+            delete = input("Enter the task you want to delete: ")
+            if delete in tasks:
+                tasks.remove(delete)
+                print(tasks)
             else:
-                print("the task you want to delete can not exit in list")
-            print(f"the task list after deletion is {tasks}")
-        elif choice=='4':
-            print("the app is closing....")
+                print("Task not found!")
+        elif choice == '5':
+            print("App is closing...")
             break
         else:
-            print("chose invalid option")
-task()
+            print("Invalid option. Please try again.")
+
+task_fun()
